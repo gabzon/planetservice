@@ -1,0 +1,15 @@
+created:
+    - database/migrations/2020_05_12_154021_create_proveedors_table.php
+    - database/migrations/2020_05_12_154022_create_pedidos_table.php
+    - database/migrations/2020_05_12_154023_create_categorias_table.php
+    - app/Proveedor.php
+    - app/Pedido.php
+    - app/Categoria.php
+    - database/factories/ProveedorFactory.php
+    - database/factories/PedidoFactory.php
+    - database/factories/CategoriaFactory.php
+models:
+    User: {  }
+    Proveedor: { nombre: 'string:200', descripcion: 'longtext nullable', email: 'string nullable', whatsapp: 'string nullable', viber: 'string nullable', telegram: 'string nullable', wechat: 'string nullable', telefono: 'string nullable', direccion: 'string nullable', codigo_postal: 'string:20 nullable', lugar: 'string nullable', estado: 'string nullable', pais: 'string nullable', facebook: 'string nullable', instagram: 'string nullable', youtube: 'string nullable', tiktok: 'string nullable', snapchat: 'string nullable', twitter: 'string nullable', es_empresa: 'boolean nullable', cantidad_de_venta: 'string nullable', logo: 'string nullable', nif: 'string nullabe', user_id: 'id unsigned' }
+    Pedido: { articulo: string, descripcion: 'longtext nullable', marca: 'string nullable', model: 'string nullable', codigo: 'string nullable', numero_serie: 'string nullable', color: 'string nullable', size: 'string nullable', cantidad: 'string nullable', year: 'string nullable', usado: 'boolean default:0', probabilidad: 'string nullable', imagen: 'string nullable', user_id: 'id unsigned', categoria_id: 'id unsigned' }
+    Categoria: { nombre: string, imagen: 'string nullable', descripcion: 'text nullable' }
