@@ -31,7 +31,10 @@ class CreateUsersTable extends Migration
             $table->string('lugar')->nullable();
             $table->string('estado')->nullable();
             $table->string('pais')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('profession')->nullable();
             $table->boolean('es_empresa')->nullable();
+            $table->string('nombre_empresa')->nullable();
             $table->timestamps();
         });
     }

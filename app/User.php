@@ -17,6 +17,21 @@ class User extends \TCG\Voyager\Models\User
      */
     protected $fillable = [
         'name', 'email', 'password',
+        'birthday',
+        'biografia',
+        'sexo',
+        'telefono1',
+        'telefono2',
+        'direccion',
+        'direccion2',
+        'codigo_postal',
+        'lugar',
+        'estado',
+        'pais',
+        'avatar',
+        'profession',
+        'es_empresa',
+        'nombre_empresa',
     ];
 
     /**
@@ -37,3 +52,5 @@ class User extends \TCG\Voyager\Models\User
         'email_verified_at' => 'datetime',
     ];
 }
+
+

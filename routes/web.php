@@ -21,6 +21,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('pedidos','PedidoController');
+Route::get('perfil','PerfilController@show')->name('perfil.show');
+Route::get('perfil/{user}/edit','PerfilController@edit')->name('perfil.edit');
+Route::put('perfil/{user}','PerfilController@update')->name('perfil.update');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

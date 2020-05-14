@@ -27,6 +27,7 @@ class Pedido extends Model
         'imagen',
         'user_id',
         'categoria_id',
+        'estado',
     ];
 
     /**
