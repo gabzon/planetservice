@@ -21,7 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('cotizaciones', 'CotizacionController@create')->name('cotizaciones.create');
+Route::get('cotizaciones', 'CotizacionController@create')->name('cotizaciones.create');
+Route::post('cotizaciones', 'CotizacionController@store')->name('cotizaciones.store');
 Route::get('cotizaciones/{cotizacion}', 'CotizacionController@show')->name('cotizaciones.show');
 Route::delete('cotizaciones/{cotizacion}', 'CotizacionController@destroy')->name('cotizaciones.destroy');
 Route::get('perfil','PerfilController@show')->name('perfil.show');
