@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pedido extends Model
+class Cotizacion extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -15,7 +15,7 @@ class Pedido extends Model
         'articulo',
         'descripcion',
         'marca',
-        'model',
+        'modelo',
         'codigo',
         'numero_serie',
         'color',
@@ -25,9 +25,9 @@ class Pedido extends Model
         'usado',
         'probabilidad',
         'imagen',
+        'estado',
         'user_id',
         'categoria_id',
-        'estado',
     ];
 
     /**
@@ -37,7 +37,6 @@ class Pedido extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'usado' => 'boolean',
         'user_id' => 'integer',
         'categoria_id' => 'integer',
     ];

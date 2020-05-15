@@ -9,6 +9,7 @@ $factory->define(Categoria::class, function (Faker $faker) {
     return [
         'nombre' => $faker->word,
         'imagen' => $faker->word,
+        'icono' => $faker->word,
         'descripcion' => $faker->text,
     ];
 });

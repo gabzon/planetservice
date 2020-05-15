@@ -34,8 +34,9 @@ class CreateProveedorsTable extends Migration
             $table->string('tiktok')->nullable();
             $table->string('snapchat')->nullable();
             $table->string('twitter')->nullable();
-            $table->boolean('es_empresa')->nullable();
+            $table->string('es_empresa')->nullable();
             $table->string('cantidad_de_venta')->nullable();
+            $table->string('contacto')->nullable();
             $table->string('logo')->nullable();
             $table->string('nif');
             $table->unsignedBigInteger('user_id');

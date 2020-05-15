@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePedidosTable extends Migration
+class CreateCotizacionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,22 @@ class CreatePedidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('cotizacions', function (Blueprint $table) {
             $table->id();
             $table->string('articulo');
             $table->longText('descripcion')->nullable();
             $table->string('marca')->nullable();
-            $table->string('model')->nullable();
+            $table->string('modelo')->nullable();
             $table->string('codigo')->nullable();
             $table->string('numero_serie')->nullable();
             $table->string('color')->nullable();
             $table->string('size')->nullable();
             $table->string('cantidad')->nullable();
             $table->string('year')->nullable();
-            $table->boolean('usado')->default();
+            $table->string('usado')->nullable();
             $table->string('probabilidad')->nullable();
             $table->string('imagen')->nullable();
+            $table->string('estado')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('categoria_id');
             $table->timestamps();
@@ -41,6 +42,6 @@ class CreatePedidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('cotizacions');
     }
 }

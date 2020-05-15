@@ -6,7 +6,7 @@
     @if (session()->has('success'))
 
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Exito!</strong> {{ session()->get('success') }}
+        <strong>Excelente!</strong> {{ session()->get('success') }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -18,9 +18,10 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <b class="h3">Mis Pedidos</b>
+                    <b class="h3">Mis Cotizaciones</b>
                     <span class="float-right">
-                        <a href="{{ route('pedidos.create') }}" class="btn btn-primary btn-sm">Hacer pedido</a>
+                        <a href="{{ route('cotizaciones.create') }}" class="btn btn-primary btn-sm">Pedir
+                            cotizacion</a>
                     </span>
                 </div>
                 <div class="card-body">
@@ -30,30 +31,73 @@
                     </div>
                     @endif
 
+                    <form action="{{ route('home') }}" method="get">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group mb-4 mt-1">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">
+                                            <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16"
+                                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z"
+                                                    clip-rule="evenodd" />
+                                                <path fill-rule="evenodd"
+                                                    d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <input type="search" class="form-control" name="search"
+                                        placeholder="Buscar en mis cotizaciones..." aria-label="Default"
+                                        aria-describedby="inputGroup-sizing-default"
+                                        value="{{ request()->query('search') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col">Articulo</th>
                                     <th scope="col">Categoria</th>
                                     <th scope="col">Cantidad</th>
-                                    <th scope="col">Estado</th>
                                     <th scope="col">Fecha del pedido</th>
+                                    <th scope="col">Estado</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($pedidos as $item)
+                                @forelse ($cotizaciones as $item)
                                 <tr>
                                     <th scope="row">{{ $item->articulo }}</th>
                                     <td>{{ $item->categoria->nombre }}</td>
                                     <td>{{ $item->cantidad }}</td>
-                                    <td>
-                                        <span class="badge badge-warning">{{ $item->estado }}</span>
-                                    </td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>
-                                        <a href="{{ route('pedidos.show', $item->id) }}"
+                                        @switch($item->estado)
+                                        @case('en proceso')
+                                        <span class="badge badge-primary">{{ $item->estado }}</span>
+                                        @break
+                                        @case('cancelado')
+                                        <span class="badge badge-danger">{{ $item->estado }}</span>
+                                        @break
+                                        @case('vencido')
+                                        <span class="badge badge-warning">{{ $item->estado }}</span>
+                                        @break
+                                        @case('completado')
+                                        <span class="badge badge-success">{{ $item->estado }}</span>
+                                        @break
+                                        @default
+                                        <span class="badge badge-light">{{ $item->estado }}</span>
+                                        @endswitch
+
+
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('cotizaciones.show', $item->id) }}"
                                             class="btn btn-sm btn-primary d-inline">
                                             <svg class="bi bi-eye-fill" width="1em" height="1em" viewBox="0 0 16 16"
                                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +109,7 @@
                                             Ver
                                         </a>
                                         &nbsp;
-                                        <form action="{{ route('pedidos.destroy', $item->id )}}" method="post"
+                                        <form action="{{ route('cotizaciones.destroy', $item->id )}}" method="post"
                                             class="d-inline">
                                             @csrf
                                             @method('delete')
@@ -87,10 +131,15 @@
                                     </td>
                                 </tr>
                                 @empty
-                                No a realizado ningun pedido
+                                <tr>
+                                    <td>No a solicitado ninguna cotizaciones</td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            {{ $cotizaciones->appends([ 'search' => request()->query('search') ])->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

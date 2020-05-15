@@ -33,6 +33,7 @@ class Proveedor extends Model
         'twitter',
         'es_empresa',
         'cantidad_de_venta',
+        'contacto',
         'logo',
         'nif',
         'user_id',
@@ -45,7 +46,6 @@ class Proveedor extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'es_empresa' => 'boolean',
         'user_id' => 'integer',
     ];
 

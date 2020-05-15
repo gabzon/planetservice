@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="form-group">
-                            <label for="email" class="font-weight-bold">Nombre completo:</label>
+                            <label for="email" class="font-weight-bold">Email:</label>
                             <input type="text" id="email" name="email" value="{{ $user->email ?? old('value') }}"
                                 class="form-control">
                         </div>
@@ -126,9 +126,9 @@
 
                 <div class="form-group">
                     <label for="biografia" class="font-weight-bold">Biografia personal</label>
-                    <textarea name="biografia" id="biografia" cols="30" rows="3" class="form-control"></textarea>
+                    <textarea name="biografia" id="biografia" cols="30" rows="3"
+                        class="form-control">{{ $user->biografia ?? old('value') }}</textarea>
                 </div>
-
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">Actualizar</button>

@@ -20,11 +20,11 @@
                 <!-- Authentication Links -->
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                 </li>
                 @if (Route::has('register'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Inscripción') }}</a>
                 </li>
                 @endif
                 @else
@@ -35,7 +35,7 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a href="{{ url('/home') }}" class=" dropdown-item">Mis pedidos</a>
+                        <a href="{{ url('/home') }}" class=" dropdown-item">Mis cotizaciones</a>
                         <a href="{{ route('perfil.show') }}" class=" dropdown-item">Perfil</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

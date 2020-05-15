@@ -1,15 +1,20 @@
 created:
-    - database/migrations/2020_05_12_154021_create_proveedors_table.php
-    - database/migrations/2020_05_12_154022_create_pedidos_table.php
-    - database/migrations/2020_05_12_154023_create_categorias_table.php
+    - database/migrations/2020_05_15_154613_create_proveedors_table.php
+    - database/migrations/2020_05_15_154614_create_cotizacions_table.php
+    - database/migrations/2020_05_15_154615_create_categorias_table.php
     - app/Proveedor.php
-    - app/Pedido.php
+    - app/Cotizacion.php
     - app/Categoria.php
     - database/factories/ProveedorFactory.php
-    - database/factories/PedidoFactory.php
+    - database/factories/CotizacionFactory.php
     - database/factories/CategoriaFactory.php
+    - app/Http/Controllers/CotizacionController.php
+    - app/Events/NewCotizacion.php
+    - tests/Feature/Http/Controllers/CotizacionControllerTest.php
+updated:
+    - routes/web.php
 models:
-    User: {  }
-    Proveedor: { nombre: 'string:200', descripcion: 'longtext nullable', email: 'string nullable', whatsapp: 'string nullable', viber: 'string nullable', telegram: 'string nullable', wechat: 'string nullable', telefono: 'string nullable', direccion: 'string nullable', codigo_postal: 'string:20 nullable', lugar: 'string nullable', estado: 'string nullable', pais: 'string nullable', facebook: 'string nullable', instagram: 'string nullable', youtube: 'string nullable', tiktok: 'string nullable', snapchat: 'string nullable', twitter: 'string nullable', es_empresa: 'boolean nullable', cantidad_de_venta: 'string nullable', logo: 'string nullable', nif: 'string nullabe', user_id: 'id unsigned' }
-    Pedido: { articulo: string, descripcion: 'longtext nullable', marca: 'string nullable', model: 'string nullable', codigo: 'string nullable', numero_serie: 'string nullable', color: 'string nullable', size: 'string nullable', cantidad: 'string nullable', year: 'string nullable', usado: 'boolean default:0', probabilidad: 'string nullable', imagen: 'string nullable', user_id: 'id unsigned', categoria_id: 'id unsigned' }
-    Categoria: { nombre: string, imagen: 'string nullable', descripcion: 'text nullable' }
+    User: { role_id: 'biginteger unsigned nullable', name: 'string:191', email: 'string:191', email_verified_at: 'datetime nullable', password: 'string:191', remember_token: 'string:100 nullable', settings: 'text nullable', birthday: 'date nullable', biografia: 'text nullable', sexo: 'string:191 nullable', telefono1: 'string:191 nullable', telefono2: 'string:191 nullable', direccion: 'string:191 nullable', direccion2: 'string:191 nullable', codigo_postal: 'string:191 nullable', lugar: 'string:191 nullable', estado: 'string:191 nullable', pais: 'string:191 nullable', avatar: 'string:191 nullable', profession: 'string:191 nullable', es_empresa: 'string:191 nullable', nombre_empresa: 'string:191 nullable', rating: 'decimal:8,2 nullable', rating_count: 'biginteger nullable' }
+    Proveedor: { nombre: 'string:200', descripcion: 'longtext nullable', email: 'string nullable', whatsapp: 'string nullable', viber: 'string nullable', telegram: 'string nullable', wechat: 'string nullable', telefono: 'string nullable', direccion: 'string nullable', codigo_postal: 'string:20 nullable', lugar: 'string nullable', estado: 'string nullable', pais: 'string nullable', facebook: 'string nullable', instagram: 'string nullable', youtube: 'string nullable', tiktok: 'string nullable', snapchat: 'string nullable', twitter: 'string nullable', es_empresa: 'string nullable', cantidad_de_venta: 'string nullable', contacto: 'string nullable', logo: 'string nullable', nif: 'string nullabe', user_id: 'id unsigned' }
+    Cotizacion: { articulo: string, descripcion: 'longtext nullable', marca: 'string nullable', modelo: 'string nullable', codigo: 'string nullable', numero_serie: 'string nullable', color: 'string nullable', size: 'string nullable', cantidad: 'string nullable', year: 'string nullable', usado: 'string nullable', probabilidad: 'string nullable', imagen: 'string nullable', estado: 'string nullable', user_id: 'id unsigned', categoria_id: 'id unsigned' }
+    Categoria: { nombre: string, imagen: 'string nullable', icono: 'string nullable', descripcion: 'text nullable' }

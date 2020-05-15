@@ -35,6 +35,8 @@ class CreateUsersTable extends Migration
             $table->string('profession')->nullable();
             $table->string('es_empresa')->nullable();
             $table->string('nombre_empresa')->nullable();
+            $table->decimal('rating')->nullable();
+            $table->bigInteger('rating_count')->nullable();
             $table->timestamps();
         });
     }

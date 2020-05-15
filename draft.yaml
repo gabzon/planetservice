@@ -19,13 +19,13 @@ models:
     tiktok: string nullable
     snapchat: string nullable
     twitter: string nullable
-    es_empresa: boolean nullable
+    es_empresa: string nullable
     cantidad_de_venta: string nullable
     contacto: string nullable
     logo: string nullable
     nif: string nullabe
     user_id: id unsigned    
-  Pedido:
+  Cotizacion:
     articulo: string
     descripcion: longtext nullable
     marca: string nullable
@@ -39,11 +39,24 @@ models:
     usado: string nullable
     probabilidad: string nullable
     imagen: string nullable
+    estado: string nullable
     user_id: id unsigned
     categoria_id: id unsigned
-    estado: string nullable
   Categoria:
     nombre: string
     imagen: string nullable
+    icono: string nullable
     descripcion: text nullable
 
+controllers:
+  Cotizacion:
+    create:
+      render: cotizaciones.create
+    store:
+      validate: articulo, descripcion
+      save: cotizacion
+      send: ReviewNotification to:cotizacion.user with:cotizacion
+      dispatch: SyncMedia with:cotizacion
+      fire: NewCotizacion with:cotizacion
+      flash: success.cotizacion
+      redirect: home

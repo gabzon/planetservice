@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Pedido;
+use App\Cotizacion;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::where('user_id', auth()->user()->id)->get();
-        return view('home')->with('pedidos', $pedidos);
+        $search = request()->query('search');            
+        if ($search) {            
+            $cotizacion = Cotizacion::where([['user_id', auth()->user()->id],['articulo', 'LIKE', "%{$search}%"]])->paginate(10);                        
+        }else {
+            $cotizacion = Cotizacion::where('user_id', auth()->user()->id)->paginate(10);
+        }
+        
+        return view('home')->with('cotizaciones', $cotizacion);
     }
 }
