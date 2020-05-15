@@ -50,6 +50,7 @@ class CotizacionController extends Controller
 
         Mail::raw('it works', function($message){
             $message->to('gab.zambrano@gmail.com')
+                ->from('info@planetservicessupplies.com')
                 ->subject('Hello there from laravel planet');
         });
         //SyncMedia::dispatch($cotizacion);
