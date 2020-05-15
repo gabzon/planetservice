@@ -1,7 +1,7 @@
 created:
-    - database/migrations/2020_05_15_154613_create_proveedors_table.php
-    - database/migrations/2020_05_15_154614_create_cotizacions_table.php
-    - database/migrations/2020_05_15_154615_create_categorias_table.php
+    - database/migrations/2020_05_15_163300_create_proveedors_table.php
+    - database/migrations/2020_05_15_163301_create_cotizacions_table.php
+    - database/migrations/2020_05_15_163302_create_categorias_table.php
     - app/Proveedor.php
     - app/Cotizacion.php
     - app/Categoria.php
@@ -9,7 +9,6 @@ created:
     - database/factories/CotizacionFactory.php
     - database/factories/CategoriaFactory.php
     - app/Http/Controllers/CotizacionController.php
-    - app/Events/NewCotizacion.php
     - tests/Feature/Http/Controllers/CotizacionControllerTest.php
 updated:
     - routes/web.php

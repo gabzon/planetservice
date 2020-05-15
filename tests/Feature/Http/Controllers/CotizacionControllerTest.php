@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Cotization;
+use App\Cotizacion;
 use App\Events\NewCotizacion;
 use App\Jobs\SyncMedia;
 use App\Mail\ReviewNotification;
@@ -62,7 +62,7 @@ class CotizacionControllerTest extends TestCase
             'descripcion' => $descripcion,
         ]);
 
-        $cotizacions = Cotization::query()
+        $cotizacions = Cotizacion::query()
             ->where('articulo', $articulo)
             ->where('descripcion', $descripcion)
             ->get();
