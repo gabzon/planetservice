@@ -48,6 +48,10 @@ class CotizacionController extends Controller
 
         //Mail::to($cotizacion->user->email)->send(new ReviewNotification($cotizacion));
 
+        Mail::raw('it works', function($message){
+            $message->to('gab.zambrano@gmail.com')
+                ->subject('Hello there from laravel planet');
+        });
         //SyncMedia::dispatch($cotizacion);
 
         //event(new NewCotizacion($cotizacion));
